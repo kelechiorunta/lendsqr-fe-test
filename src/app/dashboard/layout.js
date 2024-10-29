@@ -3,7 +3,7 @@
 import React from 'react'
 import Sidenav from '../components/Sidenav'
 import Navbar from '../components/TopNavbar'
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from '../components/AppSidebar'
 
 export default function DashBoardLayout({children}) {
@@ -11,10 +11,14 @@ export default function DashBoardLayout({children}) {
     <SidebarProvider>
         <div className='flex flex-col container max-w-screen-2xl'>
             <Navbar/>
-            <AppSidebar/>
+            
             <main className='flex max-w-screen-2xl'>
-                <Sidenav/>
-                {children}
+                <AppSidebar/>
+                <SidebarTrigger />
+                <SidebarInset>
+                {/* <Sidenav/> */}
+                    {children}
+                </SidebarInset>
             </main>
         </div>
     </SidebarProvider>
