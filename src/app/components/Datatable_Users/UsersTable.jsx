@@ -69,15 +69,15 @@ export function UsersTable({ columns, data, filterEmail }) {
   function getStatusStyle(status) {
     switch (status) {
       case "Active":
-        return "bg-[#f3fcf6] text-[#91e3a8] rounded-[100px] min-h-[30px] w-[180px]"; // Example: green background for active status
+        return "px-8 bg-[#f3fcf6] text-[#91e3a8] rounded-[100px] min-h-[30px] w-[180px]"; // Example: green background for active status
       case "Inactive":
-        return "text-[#8f95a9] bg-[#f5f5f7] rounded-[100px] min-h-[30px] w-[180px]"; // Example: gray background for inactive status
+        return "px-8 text-[#8f95a9] bg-[#f5f5f7] rounded-[100px] min-h-[30px] w-[180px]"; // Example: gray background for inactive status
       case "Pending":
-        return "bg-[#fdf7e5] text-[#f3d472] rounded-[100px] min-h-[30px] w-[180px]"; // Example: yellow background for pending status
+        return "px-8 bg-[#fdf7e5] text-[#f3d472] rounded-[100px] min-h-[30px] w-[180px]"; // Example: yellow background for pending status
       case "Blacklisted":
-        return "bg-[#fce6eb] text-[#ef6b8c] rounded-[100px] min-h-[30px] w-[180px]"; // Example: red background for error status
+        return "px-8 bg-[#fce6eb] text-[#ef6b8c] rounded-[100px] min-h-[30px] w-[180px]"; // Example: red background for error status
       default:
-        return "bg-white text-gray-500 rounded-[100px] min-h-[30px] w-[180px]"; // Default styling
+        return "px-8 bg-white text-gray-500 rounded-[100px] min-h-[30px] w-[180px]"; // Default styling
     }
   }
 
@@ -91,7 +91,7 @@ export function UsersTable({ columns, data, filterEmail }) {
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead 
-                      className='uppercase'
+                      className='uppercase font-extrabold'
                       key={header.id}>
                       {header.isPlaceholder
                         ? null
@@ -141,6 +141,10 @@ export function UsersTable({ columns, data, filterEmail }) {
        {/* PAGINATION SECTION */}
 
        <div className="flex items-center justify-end space-x-2 py-4">
+       <div className="flex-1 text-sm text-muted-foreground">
+        {table.getFilteredSelectedRowModel().rows.length} of{" "}
+        {table.getFilteredRowModel().rows.length} row(s) selected.
+      </div>
         <Button
           variant="outline"
           size="sm"

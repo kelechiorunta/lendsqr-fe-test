@@ -3,8 +3,8 @@
 
 import React, { useState } from 'react'
 import { ColumnDef } from "@tanstack/react-table"
-import { MoreHorizontal, MoreVertical, ArrowUpDown } from "lucide-react"
-
+import { MoreHorizontal, MoreVertical, ArrowUpDown, Network, Wifi, ChevronDown } from "lucide-react"
+import { Sidebar, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar'
 
 import { Button } from "@/components/ui/button"
 import {
@@ -34,16 +34,76 @@ export const Payment = {
     status: "pending" | "processing" | "success" | "failed",
     
   }
+
+  export const Organization_popup = () => {
+    return (
+      <SidebarMenu className='w-max z-50 absolute top-10 -right-2 bg-black'>
+      <SidebarMenuItem>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <SidebarMenuButton>
+               Switch Organization
+              <ChevronDown className="ml-auto" />
+            </SidebarMenuButton>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent 
+          side='top'
+          className="w-[--radix-popper-anchor-width]">
+            <DropdownMenuItem>
+              <span>Acme Inc</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <span>Acme Corp.</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <span>Account</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <span>Billing</span>
+            </DropdownMenuItem>
+              <DropdownMenuItem>
+            <span>Logout</span>
+              </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </SidebarMenuItem>
+    </SidebarMenu>
+    )
+  }
    
 
 export const columns = [
   {//ORGANIZATION HEADER
     accessorKey: "organization",
-    header: "Organization",
+    header: ({ column }) => {
+      const [togglePopup, setTogglePopUp] = useState(false)
+      return (
+        <span
+          className='relative cursor-pointer flex w-full justify-start gap-x-4 items-center font-extrabold'
+          variant="ghost"
+          onClick={() => setTogglePopUp(!togglePopup)}
+        >
+          ORGANIZATION
+          <Wifi className=" h-4 w-4" />
+          {togglePopup && <Organization_popup/>}
+        </span>
+      )
+    },
   },
   {//USERNAME HEADER
     accessorKey: "username",
-    header: "Username",
+    header: ({ column }) => {
+      return (
+        <span
+          className='cursor-pointer flex w-full justify-start gap-x-4 items-center font-extrabold'
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          USERNAME
+          <Wifi className=" h-4 w-4" />
+        </span>
+      )
+    },
   },
   {//EMAIL HEADER
     accessorKey: "email",
@@ -55,22 +115,55 @@ export const columns = [
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
             EMAIL
-            <ArrowUpDown className=" h-4 w-4" />
+            <Wifi className=" h-4 w-4" />
           </span>
         )
       },
   },
   {//PHONE HEADER
     accessorKey: "phone",
-    header: "Phone Number",
+    header: ({ column }) => {
+      return (
+        <span
+          className='cursor-pointer flex w-full justify-start gap-x-4 items-center font-extrabold'
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          PHONE
+          <Wifi className=" h-4 w-4" />
+        </span>
+      )
+    },
   },
   {//DATE HEADER
     accessorKey: "date_joined",
-    header: "Date Joined",
+    header: ({ column }) => {
+      return (
+        <span
+          className='cursor-pointer flex w-full justify-start gap-x-4 items-center font-extrabold'
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          DATE JOINED
+          <Wifi className=" h-4 w-4" />
+        </span>
+      )
+    },
   },
   {//STATUS HEADER
     accessorKey: "status",
-    header: "Status",
+    header: ({ column }) => {
+      return (
+        <span
+          className='cursor-pointer flex w-full justify-start gap-x-4 items-center font-extrabold'
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          STATUS
+          <Wifi className=" h-4 w-4" />
+        </span>
+      )
+    },
   },
 
   { //ACTION HEADER BUTTON AT THE END OF THE HEADER ...

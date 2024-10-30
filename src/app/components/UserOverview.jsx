@@ -14,7 +14,7 @@ const overviewData = [
     { icon: Users2Icon, title: 'USERS', value: '2,453', bgColor: '#fce8ff', imgColor: '#f29eff' },
     { icon: UsersRoundIcon, title: 'ACTIVE USERS', value: '2,453', bgColor: '#e8f9ff', imgColor: '#96d4ff' },
     { icon: SaveIcon, title: 'USERS WITH LOANS', value: '12,453', bgColor: '#fff8e8', imgColor: '#ffd700' },
-    { icon: Database, title: 'USERS WITH SAVINGS', value: '12,453', bgColor: '#e8ffe8', imgColor: '#4caf50' },
+    { icon: Database, title: 'USERS WITH SAVINGS', value: '102,453', bgColor: '#e8ffe8', imgColor: '#4caf50' },
 ];
 
 export default function UserOverview() {
@@ -35,7 +35,7 @@ export default function UserOverview() {
                             <CardDescription className='min-w-[47px] min-h-[16px]'>{data.title}</CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <p className='min-w-[65px] min-h-[28px]'>{data.value}</p>
+                            <p className='min-w-[65px] min-h-[28px] text-[rgba(33, 63, 125, 1)] font-bold text-[25px]'>{data.value}</p>
                         </CardContent>
                         <CardFooter>
                             {/* <p>Card Footer</p> */}

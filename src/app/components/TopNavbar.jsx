@@ -39,7 +39,7 @@ const handleSearch = (value) => {
 
         <EmailSearch onSearch={handleSearch} />
 
-        <span>Docs</span>
+        <span className='underline'>Docs</span>
         
         <nav className='flex items-center gap-x-2'>
           <Image
