@@ -5,8 +5,9 @@ import { Providers } from "./nexthauth/Providers";
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster"
-import Sidenav from "./components/Sidenav";
+// import Sidenav from "./components/Sidenav";
 import { ThemeProvider } from "next-themes";
+import UserContext from "./components/UserContext";
 
 
 const customPoppins = Poppins({
@@ -33,14 +34,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
+      
+        // style={{color-scheme:"dark"}}
         className={cn(
           customPoppins.variable, // Corrected usage of cn
           geistSans.variable,
           geistMono.variable,
+          // "dark",
           "font-sans",
-          "antialiased" // This should be a normal string argument
+          "antialiased", // This should be a normal string argument
+          {"debug-screens":process.env.NODE_ENV === 'development'}
         )}
       ><Providers>
         <ThemeProvider
@@ -49,8 +54,10 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionOnChange
           >
-            <main className='w-screen max-w-screen'>
-              {children}
+            <main>
+              <UserContext>
+                {children}
+              </UserContext>
             </main>
               <Toaster />
           </ThemeProvider>

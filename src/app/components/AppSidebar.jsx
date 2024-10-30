@@ -1,4 +1,6 @@
-import { Calendar, Users2, Users, Inbox, Search, Settings, ChevronDown, UserCheck, UserX } from "lucide-react"
+'use client'
+
+import { Calendar, Users2, Users, House, Inbox, Search, Settings, ChevronDown, UserCheck, UserX } from "lucide-react"
  
 import {
   Sidebar,
@@ -12,18 +14,25 @@ import {
   SidebarHeader,
   SidebarGroupAction,
   
-
 } from "@/components/ui/sidebar"
 
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible"
 
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
- 
+import { signOut } from "next-auth/react"
 // Menu items.
-const items = [
+const dashboard = [
+    {
+      title: "Dashboard",
+      url: "/dashboard",
+      icon: House,
+    },
+]
+
+const customers = [
   {
     title: "Users",
-    url: "#",
+    url: "/dashboard/users",
     icon: Users2,
   },
   {
@@ -62,10 +71,81 @@ const items = [
     icon: UserX,
   },
 ]
+
+const businesses = [
+    {
+      title: "Organization",
+      url: "#",
+      icon: Users2,
+    },
+    {
+      title: "Loan Products",
+      url: "#",
+      icon: Users,
+    },
+    {
+      title: "Saving Products",
+      url: "#",
+      icon: Calendar,
+    },
+    {
+      title: "Fees and Charges",
+      url: "#",
+      icon: Search,
+    },
+    {
+      title: "Transactions",
+      url: "#",
+      icon: Settings,
+    },
+    {
+      title: "Services",
+      url: "#",
+      icon: Settings,
+    },
+    {
+      title: "Services Account",
+      url: "#",
+      icon: UserCheck,
+    },
+    {
+      title: "Settlements",
+      url: "#",
+      icon: UserX,
+    },
+    {
+      title: "Reports",
+      url: "#",
+      icon: UserX,
+    },
+  ]
+
+  const settings = [
+    {
+      title: "Preferences",
+      url: "#",
+      icon: Users2,
+    },
+    {
+      title: "Fees and Pricing",
+      url: "#",
+      icon: Users,
+    },
+    {
+      title: "Audit Logs",
+      url: "#",
+      icon: Calendar,
+    },
+    ]
  
 import { useSidebar } from "@/components/ui/sidebar"
  
 export function AppSidebar() {
+
+  const signout = () => {
+    signOut();
+}
+
   const {
     state,
     open,
@@ -77,15 +157,15 @@ export function AppSidebar() {
   } = useSidebar();
 
   return (
-    <Sidebar  collapsible="none" >
+    <Sidebar  >
        
   <SidebarHeader>
-    <SidebarMenu>
+    <SidebarMenu className='mt-14'>
       <SidebarMenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton>
-              Select Workspace
+              Switch Organization
               <ChevronDown className="ml-auto" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
@@ -105,7 +185,7 @@ export function AppSidebar() {
               <span>Billing</span>
             </DropdownMenuItem>
               <DropdownMenuItem>
-            <span>Sign out</span>
+            <span onClick={signout}>Sign out</span>
               </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -113,7 +193,27 @@ export function AppSidebar() {
     </SidebarMenu>   
   </SidebarHeader>
 
-    <Collapsible defaultOpen className="group/collapsible">
+  {/* <SidebarContent> */}
+        <SidebarGroup>
+          {/* <SidebarGroupLabel>CUSTOMERS</SidebarGroupLabel> */}
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {dashboard.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <a href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      {/* </SidebarContent> */}
+
+    {/* <Collapsible defaultOpen className="group/collapsible">
       <SidebarGroup>
         <SidebarGroupLabel asChild>
           <CollapsibleTrigger>
@@ -121,18 +221,69 @@ export function AppSidebar() {
             <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
           </CollapsibleTrigger>
         </SidebarGroupLabel>
-        <CollapsibleContent>
-          <SidebarGroupContent />
-        </CollapsibleContent>
+        
+        {customers.map((item) => (
+                <CollapsibleContent key={item.title} className=''>
+                  
+                  <SidebarMenuButton asChild>
+                    <a href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                
+                </CollapsibleContent>
+              ))}
+    
       </SidebarGroup>
-    </Collapsible>
+    </Collapsible> */}
       
-  <SidebarContent>
+    <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>CUSTOMERS</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
+              {customers.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <a href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>BUSINESSES</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {businesses.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <a href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>SETTINGS</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {settings.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>

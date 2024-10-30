@@ -1,13 +1,14 @@
 'use client'
 
 import React from 'react'
-import Sidenav from '../components/Sidenav'
+// import Sidenav from '../components/Sidenav'
 import Navbar from '../components/TopNavbar'
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from '../components/AppSidebar'
 
 export default function DashBoardLayout({children}) {
   return (
+    <>
     <SidebarProvider>
         <div className='flex flex-col container max-w-screen-2xl'>
             <Navbar/>
@@ -15,13 +16,14 @@ export default function DashBoardLayout({children}) {
             <main className='flex max-w-screen-2xl'>
                 <AppSidebar/>
                 <SidebarTrigger />
-                <SidebarInset>
+                {/* <SidebarInset> */}
                 {/* <Sidenav/> */}
                     {children}
-                </SidebarInset>
+                {/* </SidebarInset> */}
             </main>
         </div>
     </SidebarProvider>
+    </>
     
   )
 }

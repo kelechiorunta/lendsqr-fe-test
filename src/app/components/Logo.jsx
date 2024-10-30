@@ -23,6 +23,7 @@ export default function Logo() {
         </svg>
         
         <Image
+        className='max-w-[600px] max-h-[337.57px]'
         width={600}
         height={337.57}
         alt='logo' 
