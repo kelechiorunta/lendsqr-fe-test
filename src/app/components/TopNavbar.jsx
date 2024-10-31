@@ -56,7 +56,7 @@ const handleSearch = (value) => {
           src={'/imgs/avatar.png'}
           className='min-w-[40px] min-h-[40px] rounded-full border shadow-md'/>
           
-          <SidebarMenu className='w-max'>
+          <SidebarMenu className='w-max dark:text-black'>
             <SidebarMenuItem>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>

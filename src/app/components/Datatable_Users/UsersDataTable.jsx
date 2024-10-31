@@ -87,7 +87,7 @@ function getData(){
 export default function UsersDataTable() {
   const userEmailContext = useContext(EmailContext);
   const { filterEmail, setFilterEmail } = userEmailContext;
-  const data = getData()
+  const data = getData();
 
   return (
     <div className="container mx-auto py-10">

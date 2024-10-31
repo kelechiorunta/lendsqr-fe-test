@@ -14,7 +14,7 @@ export default function page() {
         <h1 className='text-3xl px-2'>USERS</h1>
         <UserOverview/>
         <UsersDataTable/>
-        <button onClick={signout}>Logout</button>
+        {/* <button onClick={signout}>Logout</button> */}
     </div>
   )
 }

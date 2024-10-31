@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react'
 import { ColumnDef } from "@tanstack/react-table"
-import { MoreHorizontal, MoreVertical, ArrowUpDown, Network, Wifi, ChevronDown } from "lucide-react"
+import { MoreHorizontal, MoreVertical, ArrowUpDown, Network, Wifi, ChevronDown, Eye, UserX, UserCheck } from "lucide-react"
 import { Sidebar, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar'
 
 import { Button } from "@/components/ui/button"
@@ -15,6 +15,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+
+import { useRouter } from 'next/navigation'
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -171,6 +173,7 @@ export const columns = [
     cell: ({ row }) => {
       const user = row.original
       const [toggle, setToggle] = useState(user);
+      const router = useRouter();
  
       return (
         <DropdownMenu key={user}>
@@ -180,19 +183,31 @@ export const columns = [
               <MoreVertical className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuContent className='p-4' align="end">
+            <DropdownMenuLabel></DropdownMenuLabel>
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(user.username)}
             >
-              Copy Username
+              {/* <Eye/>
+              View Details */}
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View User</DropdownMenuItem>
-            <DropdownMenuItem>View User Details</DropdownMenuItem>
-            <DropdownMenuItem onClick={()=>setToggle(prev=>({
-                ...prev, status: 'Active'
-            }))}>Toggle Status</DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={()=>router.push(`/dashboard/users`)} //Make this a dynamic route later
+              className='flex gap-x-2 items-center mb-2'>
+                <Eye/>
+              View Details
+            </DropdownMenuItem>
+            <DropdownMenuItem 
+              className='flex gap-x-2 items-center mb-2'>
+                <UserX/>
+              Blacklist User
+            </DropdownMenuItem>
+            <DropdownMenuItem 
+              className='flex gap-x-2 items-center mb-2'>
+                <UserCheck/>
+              Activate User
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
