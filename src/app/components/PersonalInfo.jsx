@@ -18,19 +18,36 @@ const userEducationDetails = {
     'SECTOR OF EMPLOYMENT': 'FinTech',
     'DURATION OF EMPLOYMENT': '2 years',
     'OFFICE EMAIL': 'grace@lendsqr.com',
-    'MONTHLY INCOME': `&#8358;200,000.00 - &#8358;400,000.00`,
-    'LOAN REPAYMENT': `&#8358;40,000.00`,
+    'MONTHLY INCOME': [200000, 400000],//`&#8358;200,000.00 - &#8358;400,000.00`,
+    'LOAN REPAYMENT': [40000]//`&#8358;40,000.00`,
 }
+
+const userSocialDetails = {
+    'TWITTER': "@grace_effiom",
+    'FACEBOOK': 'Grace Effiom',
+    'INSTAGRAM': '@grace_effiom',
+}
+
+const userGuarantorDetails = {
+    'FULL NAME': "Debby Ogana",
+    'PHONE NUMBER': '07060780922',
+    'EMAIL ADDRESS': 'debby@gmail.com',
+    'RELATIONSHIP': 'Sister',
+}
+
+
 
 export default function PersonalInfo() {
     const personalDetails = Object.entries(userPersonalDetails);
     const educationDetails = Object.entries(userEducationDetails);
+    const socialDetails = Object.entries(userSocialDetails);
+    const guarantorDetails = Object.entries(userGuarantorDetails);
   return (
-    <div className='flex flex-col gap-y-0 shadow-xl border'>
+    <div className='flex flex-col gap-y-0 shadow-xl rounded-md'>
 
         {/* /USER PERSONAL DETAILS SECTION */}
         <div className='flex flex-col gap-4 shadow-none p-4 border border-b-none'>
-            <h1 className='text-2xl px-4'>Personal Information</h1>
+            <h1 className='text-md leading-[18.77px] font-medium px-4 mt-4'>Personal Information</h1>
             <ul className='grid grid-cols-5 gap-x-2'>
                 {personalDetails.map((item, index)=>(<DetailsCard key={index} title={item[0]} description={item[1]}/>))}
             </ul>
@@ -39,10 +56,40 @@ export default function PersonalInfo() {
         <hr className='border-2 bg-background w-[80%] mx-auto h-1'/>
 
         {/* /EMPLOYMENT AND EDUCATION DETAILS SECTION */}
-        <div className='flex flex-col gap-4 shadow-xl p-4 border'>
-            <h1 className='text-2xl px-4'>Education and Employment</h1>
+        <div className='flex flex-col gap-4 p-4 shadow-none border border-b-0'>
+            <h1 className='text-md leading-[18.77px] font-medium px-4 mt-4'>Education and Employment</h1>
             <ul className='grid grid-cols-4 gap-x-2'>
                 {educationDetails.map((item, index)=>(<DetailsCard key={index} title={item[0]} description={item[1]}/>))}
+            </ul>
+        </div>
+
+        <hr className='border-2 bg-background w-[80%] mx-auto h-1'/>
+
+        {/* /SOCIAL DETAILS SECTION */}
+        <div className='flex flex-col gap-4 p-4 shadow-none border border-b-0'>
+            <h1 className='text-md leading-[18.77px] font-medium px-4 mt-4'>Socials</h1>
+            <ul className='grid grid-cols-4 gap-x-2'>
+                {socialDetails.map((item, index)=>(<DetailsCard key={index} title={item[0]} description={item[1]}/>))}
+            </ul>
+        </div>
+
+        <hr className='border-2 bg-background w-[80%] mx-auto h-1'/>
+
+        {/* /GUARANTOR DETAILS SECTION */}
+        <div className='flex flex-col gap-4 p-4 shadow-none border border-b-0'>
+            <h1 className='text-md leading-[18.77px] font-medium px-4 mt-4'>Guarantor</h1>
+            <ul className='grid grid-cols-4 gap-x-2'>
+                {guarantorDetails.map((item, index)=>(<DetailsCard key={index} title={item[0]} description={item[1]}/>))}
+            </ul>
+        </div>
+
+        <hr className='border-2 bg-background w-[80%] mx-auto h-1'/>
+
+        {/* /GUARANTOR DETAILS SECTION */}
+        <div className='flex flex-col gap-4 p-4 shadow-none border border-b-0'>
+            <h1 className='text-md leading-[18.77px] font-medium px-4 mt-4'></h1>
+            <ul className='grid grid-cols-4 gap-x-2'>
+                {guarantorDetails.map((item, index)=>(<DetailsCard key={index} title={item[0]} description={item[1]}/>))}
             </ul>
         </div>
     </div>

@@ -22,10 +22,10 @@ export default function page() {
         <div className='flex justify-between items-center mb-8'>
           <h1 className='text-1.5xl px-4 text-[rgba(33, 63, 125, 1)] font-medium'>Users Details</h1>
           <div className='flex items-center gap-x-2'>
-            <Button className={cn(buttonVariants({variant:'destructive'}))}>
+            <Button className={cn(buttonVariants({ className:'text-[#eb5077] bg-transparent border-[#eb5077] border-2'}))}>
               BLACKLIST USER
             </Button>
-            <Button className={cn(buttonVariants({variant:'active'}))}>
+            <Button className={cn(buttonVariants({className:'text-[#4ed2d1] bg-transparent border-[#4ed2d1] border-2'}))}>
               ACTIVATE USER
             </Button>
           </div>

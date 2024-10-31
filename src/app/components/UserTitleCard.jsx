@@ -44,12 +44,18 @@ import PersonalInfo from "./PersonalInfo"
 export function UserTitleCard() {
   return (
     <Card className="min-w-[350px] border-none px-0">
-      <CardHeader className='shadow-xl'>
+      <CardHeader className='shadow-md'>
     <div className='flex flex-col gap-2 '>
       <div className='rounded-md flex gap-x-20 items-center py-8'>
         <div className='flex items-center gap-4 border-none border-r-2'>
             <div className='w-[100px] h-[100px] border rounded-full'>
-                <User className='w-[100px] h-[100px] border rounded-full'/>
+                <Image 
+                  width={100}
+                  height={100}
+                  className='w-[100px] h-[100px] border rounded-full'
+                  src={'/imgs/avatar_user.png'} 
+                  alt='avatar_details'/>
+                {/* <User className='w-[100px] h-[100px] border rounded-full'/> */}
             </div>
             <div className='flex flex-col gap-2'>
                 <CardTitle>Grace Effiom</CardTitle>
@@ -83,16 +89,6 @@ export function UserTitleCard() {
             </div>   
         </div>
     </div>
-        {/* <div className='translate-y-14'>
-            <Tabs defaultValue="account" className="w-[400px] 'bg-white'">
-                <TabsList>
-                    <TabsTrigger value="account">Account</TabsTrigger>
-                    <TabsTrigger value="password">Password</TabsTrigger>
-                </TabsList>
-                <TabsContent value="account">Make changes to your account here.</TabsContent>
-                <TabsContent value="password">Change your password here.</TabsContent>
-            </Tabs>
-        </div> */}
     </div> 
       </CardHeader>
       <CardContent className='-translate-y-10 max-w-full w-full px-0'>
@@ -137,19 +133,18 @@ export function UserTitleCard() {
         </TabsTrigger>
       </TabsList>
       <TabsContent value="general" className='py-4 max-w-full min-w-full'>
-        {/* <p className='shadow-xl p-2 text-3xl'>General</p> */}
         <PersonalInfo/>
       </TabsContent>
-      <TabsContent value="documents" className='py-4'>
+      <TabsContent value="documents" className='py-4 max-w-full min-w-full'>
         <p className='shadow-xl p-2 text-3xl'>Documents</p>
       </TabsContent>
-      <TabsContent value="bank_details" className='py-4'>
+      <TabsContent value="bank_details" className='py-4 max-w-full min-w-full'>
         <p className='shadow-xl p-2 text-3xl'>Bank Details</p>
       </TabsContent>
-      <TabsContent value="loans" className='py-4'>
-        <p className='shadow-xl p-2 text-3xl'>Loans.</p>
+      <TabsContent value="loans" className='py-4 max-w-full min-w-full'>
+        <p className='shadow-xl p-2 text-3xl'>Loans</p>
       </TabsContent>
-      <TabsContent value="savings" className='p-4'>
+      <TabsContent value="savings" className='py-4 max-w-full min-w-full'>
         <p className='shadow-xl p-2 text-3xl'>Savings</p>
       </TabsContent>
       <TabsContent value="app_system" className='p-4'>
