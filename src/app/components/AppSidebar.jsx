@@ -1,6 +1,13 @@
 'use client'
 
-import { Calendar, Users2, Users, House, Inbox, Search, Settings, ChevronDown, UserCheck, UserX } from "lucide-react"
+import { Home, UserCheck2, DollarSign, Wallet, 
+  Calendar, Users2, Users, House, Inbox, Search, 
+  Settings, ChevronDown, UserCheck, UserX, GitMerge,
+  Sliders, PiggyBank, FileText, Navigation, Hand,
+  Handshake
+ } from "lucide-react"
+
+ import Image from "next/image"
  
 import {
   Sidebar,
@@ -25,7 +32,8 @@ const dashboard = [
     {
       title: "Dashboard",
       url: "/dashboard",
-      icon: House,
+      icon: Home,
+      image: '/imgs/dashboard.png'
     },
 ]
 
@@ -33,42 +41,50 @@ const customers = [
   {
     title: "Users",
     url: "/dashboard/users",
-    icon: Users2,
+    icon: Users,
+    image: '/imgs/customers/users.png'
   },
   {
     title: "Guarantors",
     url: "#",
-    icon: Users,
+    icon: UserCheck2,
+    image: '/imgs/customers/guarantors.png'
   },
   {
     title: "Loans",
     url: "#",
-    icon: Calendar,
+    icon: Wallet,
+    image: '/imgs/customers/loans.png'
   },
   {
     title: "Decision Models",
     url: "#",
-    icon: Search,
+    icon: Handshake,
+    image: '/imgs/customers/decision_models.png'
   },
   {
     title: "Savings",
     url: "#",
     icon: Settings,
+    image: '/imgs/customers/savings.png'
   },
   {
     title: "Loan Requests",
     url: "#",
     icon: Settings,
+    image: '/imgs/customers/loan_request.png'
   },
   {
     title: "Whitelist",
     url: "#",
     icon: UserCheck,
+    image: '/imgs/customers/whitelist.png'
   },
   {
     title: "Karma",
     url: "#",
     icon: UserX,
+    image: '/imgs/customers/karma.png'
   },
 ]
 
@@ -77,46 +93,55 @@ const businesses = [
       title: "Organization",
       url: "#",
       icon: Users2,
+      image: '/imgs/businesses/organization.png'
     },
     {
       title: "Loan Products",
       url: "#",
       icon: Users,
+      image: '/imgs/businesses/loan_products.png'
     },
     {
       title: "Saving Products",
       url: "#",
       icon: Calendar,
+      image: '/imgs/businesses/savings_products.png'
     },
     {
       title: "Fees and Charges",
       url: "#",
       icon: Search,
+      image: '/imgs/businesses/fees_charges.png'
     },
     {
       title: "Transactions",
       url: "#",
       icon: Settings,
+      image: '/imgs/businesses/transactions.png'
     },
     {
       title: "Services",
       url: "#",
       icon: Settings,
+      image: '/imgs/businesses/services.png'
     },
     {
       title: "Services Account",
       url: "#",
       icon: UserCheck,
+      image: '/imgs/businesses/service_account.png'
     },
     {
       title: "Settlements",
       url: "#",
       icon: UserX,
+      image: '/imgs/businesses/settlements.png'
     },
     {
       title: "Reports",
       url: "#",
       icon: UserX,
+      image: '/imgs/businesses/reports.png'
     },
   ]
 
@@ -125,16 +150,19 @@ const businesses = [
       title: "Preferences",
       url: "#",
       icon: Users2,
+      image: '/imgs/settings/preferences.png'
     },
     {
       title: "Fees and Pricing",
       url: "#",
       icon: Users,
+      image: '/imgs/settings/fees_pricing.png'
     },
     {
       title: "Audit Logs",
       url: "#",
       icon: Calendar,
+      image: '/imgs/settings/audit_logs.png'
     },
     ]
  
@@ -165,6 +193,11 @@ export function AppSidebar() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton>
+              <Image 
+                width={16}
+                height={16}
+                src='/imgs/businesses/organization.png' 
+                alt='organization'/>
               Switch Organization
               <ChevronDown className="ml-auto" />
             </SidebarMenuButton>
@@ -173,20 +206,20 @@ export function AppSidebar() {
           side='top'
           className="w-[--radix-popper-anchor-width]">
             <DropdownMenuItem>
-              <span>Acme Inc</span>
+              <span>Lendsqr</span>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <span>Acme Corp.</span>
+              <span>Irorun</span>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <span>Account</span>
+              <span>Lendstar</span>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            {/* <DropdownMenuItem>
               <span>Billing</span>
             </DropdownMenuItem>
               <DropdownMenuItem>
             <span onClick={signout}>Sign out</span>
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
@@ -202,7 +235,12 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
-                      <item.icon />
+                      <Image 
+                        width={16}
+                        height={16}
+                        src={item.image} 
+                        alt={item.title}/>
+                      {/* <item.icon /> */}
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
@@ -212,31 +250,6 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       {/* </SidebarContent> */}
-
-    {/* <Collapsible defaultOpen className="group/collapsible">
-      <SidebarGroup>
-        <SidebarGroupLabel asChild>
-          <CollapsibleTrigger>
-            Help
-            <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
-          </CollapsibleTrigger>
-        </SidebarGroupLabel>
-        
-        {customers.map((item) => (
-                <CollapsibleContent key={item.title} className=''>
-                  
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                
-                </CollapsibleContent>
-              ))}
-    
-      </SidebarGroup>
-    </Collapsible> */}
       
     <SidebarContent>
         <SidebarGroup>
@@ -247,7 +260,12 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
-                      <item.icon />
+                      <Image 
+                        width={16}
+                        height={16}
+                        src={item.image} 
+                        alt={item.title}/>
+                      {/* <item.icon /> */}
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
@@ -267,7 +285,12 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
-                      <item.icon />
+                      <Image 
+                        width={16}
+                        height={16}
+                        src={item.image} 
+                        alt={item.title}/>
+                      {/* <item.icon /> */}
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
@@ -287,7 +310,12 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
-                      <item.icon />
+                      <Image 
+                        width={16}
+                        height={16}
+                        src={item.image} 
+                        alt={item.title}/>
+                      {/* <item.icon /> */}
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
@@ -301,25 +329,3 @@ export function AppSidebar() {
 
   )
 }
-
-{/* <SidebarMenu>
-      <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <SidebarMenuButton className='text-white'>
-              Switch Organization
-              <ChevronDown className="ml-auto" />
-            </SidebarMenuButton>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent > */}
-        {/* //   className="w-[--radix-popper-anchor-width]"> */}
-            {/* <DropdownMenuItem>
-              <span>Acme Inc</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <span>Acme Corp.</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </SidebarMenuItem>
-    </SidebarMenu> */}
