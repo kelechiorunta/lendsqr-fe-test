@@ -1,7 +1,8 @@
 // Users columns (client component) that will contain our column definitions.
 // "use client"
 
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { EmailContext } from '../UserContext'
 import { ColumnDef } from "@tanstack/react-table"
 import { MoreHorizontal, MoreVertical, ArrowUpDown, Network, Wifi, ChevronDown, Eye, UserX, UserCheck } from "lucide-react"
 import { Sidebar, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar'
@@ -15,6 +16,24 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 import { useRouter } from 'next/navigation'
 
@@ -39,37 +58,72 @@ export const Payment = {
 
   export const Organization_popup = () => {
     return (
-      <SidebarMenu className='w-max z-50 absolute top-10 -right-2 bg-black'>
-      <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <SidebarMenuButton>
-               Switch Organization
-              <ChevronDown className="ml-auto" />
-            </SidebarMenuButton>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent 
-          side='top'
-          className="w-[--radix-popper-anchor-width]">
-            <DropdownMenuItem>
-              <span>Acme Inc</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <span>Acme Corp.</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <span>Account</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <span>Billing</span>
-            </DropdownMenuItem>
-              <DropdownMenuItem>
-            <span>Logout</span>
-              </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </SidebarMenuItem>
-    </SidebarMenu>
+      <Card className="w-max max-w-[350px] absolute top-10 right-100 z-50">
+      <CardHeader>
+        <CardTitle></CardTitle>
+        <CardDescription></CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form>
+          <div className="grid w-full items-center gap-4 capitalize">
+            
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="organisation">Organisation</Label>
+              <Select>
+                <SelectTrigger id="organisation">
+                  <SelectValue placeholder="Select" />
+                </SelectTrigger>
+                <SelectContent position="popper">
+                  <SelectItem value="lendsqr">Lendsqr</SelectItem>
+                  <SelectItem value="irorun">Irorun</SelectItem>
+                  <SelectItem value="lendstar">Lendstar</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="name">Username</Label>
+              <Input id="name" placeholder="User" />
+            </div>
+
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" type='email' placeholder="Email" />
+            </div>
+
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="date">Date</Label>
+              <Input id="date" type='date' placeholder="Date" />
+            </div>
+
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="phone">Phone Number</Label>
+              <Input id="phone" placeholder="Phone Number" />
+            </div>
+
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="status">Status</Label>
+              <Select>
+                <SelectTrigger id="status">
+                  <SelectValue placeholder="Select" />
+                </SelectTrigger>
+                <SelectContent position="popper">
+                  <SelectItem value="inactive">InActive</SelectItem>
+                  <SelectItem value="pending">Pending</SelectItem>
+                  <SelectItem value="blacklisted">Blacklisted</SelectItem>
+                  <SelectItem value="active">Active</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        </form>
+      </CardContent>
+      <CardFooter className="flex items-center gap-x-4 justify-between">
+        <Button variant="outline">Reset</Button>
+        <Button className='bg-[#39cdcc]'>Filter</Button>
+      </CardFooter>
+    </Card> 
+
     )
   }
    
@@ -78,7 +132,9 @@ export const columns = [
   {//ORGANIZATION HEADER
     accessorKey: "organization",
     header: ({ column }) => {
-      const [togglePopup, setTogglePopUp] = useState(false)
+      const user_Context = useContext(EmailContext);
+      const { setTogglePopUp, togglePopup } = user_Context;
+      // const [togglePopup, setTogglePopUp] = useState(false)
       return (
         <span
           className='relative cursor-pointer flex w-full justify-start gap-x-4 items-center font-extrabold'
@@ -87,7 +143,7 @@ export const columns = [
         >
           ORGANIZATION
           <Wifi className=" h-4 w-4" />
-          {togglePopup && <Organization_popup/>}
+          {/* <div className='z-50 absolute w-max'>{togglePopup && <Organization_popup/>}</div> */}
         </span>
       )
     },

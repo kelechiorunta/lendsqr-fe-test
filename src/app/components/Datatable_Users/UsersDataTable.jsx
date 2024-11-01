@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useContext } from 'react'
-import { columns } from "./UsersColumns"
+import { columns, Organization_popup } from "./UsersColumns"
 import { UsersTable } from "./UsersTable"
 import { EmailContext } from "../UserContext"
 
@@ -86,13 +86,14 @@ function getData(){
 
 export default function UsersDataTable() {
   const userEmailContext = useContext(EmailContext);
-  const { filterEmail, setFilterEmail } = userEmailContext;
+  const { filterEmail, setFilterEmail, togglePopup } = userEmailContext;
   const data = getData();
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="relative container mx-auto py-10 overflow-visible">
       <UsersTable columns={columns} data={data} filterEmail={filterEmail} 
       />
+    <div className='absolute top-[50px] -left-10'>{togglePopup && <Organization_popup/>}</div>
     </div>
   )
 }

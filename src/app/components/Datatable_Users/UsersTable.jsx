@@ -90,15 +90,15 @@ export function UsersTable({ columns, data, filterEmail }) {
 
   return (
     <div>
-      <div className="rounded-md border">
-        <Table>
-          <TableHeader>
+      <div className="rounded-md border overflow-visible">
+        <Table className='overflow-visible'>
+          <TableHeader className='overflow-visible'>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead 
-                      className='uppercase font-extrabold'
+                      className='uppercase font-extrabold overflow-visible'
                       key={header.id}>
                       {header.isPlaceholder
                         ? null

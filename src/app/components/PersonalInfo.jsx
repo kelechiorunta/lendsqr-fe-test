@@ -48,7 +48,7 @@ export default function PersonalInfo() {
         {/* /USER PERSONAL DETAILS SECTION */}
         <div className='flex flex-col gap-4 shadow-none p-4 border border-b-none'>
             <h1 className='text-md leading-[18.77px] font-medium px-4 mt-4'>Personal Information</h1>
-            <ul className='grid grid-cols-5 gap-x-2'>
+            <ul className='gap-x-2 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5'>
                 {personalDetails.map((item, index)=>(<DetailsCard key={index} title={item[0]} description={item[1]}/>))}
             </ul>
         </div>
@@ -58,7 +58,7 @@ export default function PersonalInfo() {
         {/* /EMPLOYMENT AND EDUCATION DETAILS SECTION */}
         <div className='flex flex-col gap-4 p-4 shadow-none border border-b-0'>
             <h1 className='text-md leading-[18.77px] font-medium px-4 mt-4'>Education and Employment</h1>
-            <ul className='grid grid-cols-4 gap-x-2'>
+            <ul className='gap-x-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
                 {educationDetails.map((item, index)=>(<DetailsCard key={index} title={item[0]} description={item[1]}/>))}
             </ul>
         </div>
@@ -68,7 +68,7 @@ export default function PersonalInfo() {
         {/* /SOCIAL DETAILS SECTION */}
         <div className='flex flex-col gap-4 p-4 shadow-none border border-b-0'>
             <h1 className='text-md leading-[18.77px] font-medium px-4 mt-4'>Socials</h1>
-            <ul className='grid grid-cols-4 gap-x-2'>
+            <ul className='gap-x-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
                 {socialDetails.map((item, index)=>(<DetailsCard key={index} title={item[0]} description={item[1]}/>))}
             </ul>
         </div>
@@ -78,7 +78,7 @@ export default function PersonalInfo() {
         {/* /GUARANTOR DETAILS SECTION */}
         <div className='flex flex-col gap-4 p-4 shadow-none border border-b-0'>
             <h1 className='text-md leading-[18.77px] font-medium px-4 mt-4'>Guarantor</h1>
-            <ul className='grid grid-cols-4 gap-x-2'>
+            <ul className='gap-x-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
                 {guarantorDetails.map((item, index)=>(<DetailsCard key={index} title={item[0]} description={item[1]}/>))}
             </ul>
         </div>
@@ -88,7 +88,7 @@ export default function PersonalInfo() {
         {/* /GUARANTOR DETAILS SECTION */}
         <div className='flex flex-col gap-4 p-4 shadow-none border border-b-0'>
             <h1 className='text-md leading-[18.77px] font-medium px-4 mt-4'></h1>
-            <ul className='grid grid-cols-4 gap-x-2'>
+            <ul className='gap-x-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
                 {guarantorDetails.map((item, index)=>(<DetailsCard key={index} title={item[0]} description={item[1]}/>))}
             </ul>
         </div>

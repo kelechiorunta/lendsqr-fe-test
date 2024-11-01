@@ -62,9 +62,11 @@ export async function auth(req, res) {
         },
         pages: {
             signIn: '/login', // Custom sign-in page
-            signOut:'/dashboard',
+            signOut:'/',
             error: '/auth/error', // Error page for authentication issues
             newUser: '/auth/new-user', // Redirect new users here after first sign-in
+            resetPassword: '/reset-password', // Custom reset password page
+            forgotPassword: '/forgot-password'
         },
         events:{
             async signIn(message){

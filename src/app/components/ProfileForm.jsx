@@ -9,6 +9,7 @@ import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
 import { ToastAction } from "@/components/ui/toast"
+import Link from "next/link"
 import {
   Form,
   FormControl,
@@ -90,11 +91,11 @@ export default function ProfileForm() {
   const { isSubmitting, isValid } = form.formState
 
   return (
-    <div className='max-w-full min-h-screen container flex justify-center items-center'>
+    <div className='min-w-[300px] max-w-full border min-h-[70%] container flex justify-center items-center sm:justify-start sm:min-h-screen'>
     
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
-            className="space-y-4 py-[100px] px-[100px] max-w-[704px] max-h-[900px] border-[rgba(84, 95, 125, 0.15)]">
+            className="min-w-[300px] min-h-[300px] w-full space-y-4 p-[10%] max-w-[704px] max-h-[900px] border-[rgba(84, 95, 125, 0.15)] sm:p-[10%] md:p-[20%] lg:p-[100px]">
         {/* Email Field */}
         <p className='text-red-500'>{error}</p>
 
@@ -108,7 +109,7 @@ export default function ProfileForm() {
               {/* <FormLabel>Email</FormLabel> */}
               <FormControl>
                 <Input
-                  className="min-w-[447px] min-h-[50px] max-w-full"
+                  className=" min-h-[50px] sm:min-w-[447px] md:max-w-[70%] lg:max-w-full "
                   placeholder="Email"
                   disabled={isSubmitting}
                   {...field}
@@ -132,7 +133,7 @@ export default function ProfileForm() {
               <FormControl>
                 <div className='relative'>
                 <Input
-                  className="min-w-[447px] min-h-[50px] max-w-full text-black"
+                  className=" min-h-[50px] sm:min-w-[447px] md:max-w-[70%] lg:max-w-full "
                   placeholder="Password"
                   type={isPassword? "password" : "text"}
                   disabled={isSubmitting}
@@ -140,7 +141,7 @@ export default function ProfileForm() {
                 />
                 <span 
                 onClick={togglePasswordView}
-                className='absolute top-[25%] left-[80%] cursor-pointer text-[rgb(57,205,204)] font-bold'>
+                className='absolute top-[25%] left-[70%] cursor-pointer text-[rgb(57,205,204)] font-bold sm:left-[80%]'>
                   {isPassword? 'SHOW' : 'HIDE'}
                 </span>
                 </div>
@@ -153,11 +154,15 @@ export default function ProfileForm() {
           )}
         />
 
-        <span className='text-[rgb(57,205,204)] block'>FORGOT PASSWORD?</span>
+        <span className='text-[rgb(57,205,204)] block'>
+        <Link href="/forgot-password">
+          Forgot Password?
+        </Link>
+        </span>
         
         <Button
           disabled={!isValid || isSubmitting}
-          className="bg-[rgb(57,205,204)] min-w-[447px] min-h-[48px]"
+          className="bg-[rgb(57,205,204)] w-full min-h-[48px] sm:min-w-[447px] md:max-w-[70%] lg:max-w-full "
           type="submit"
       >
           {isSubmitting ? "Logging in..." : "LOG IN"}
