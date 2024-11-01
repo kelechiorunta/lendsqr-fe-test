@@ -43,8 +43,8 @@ import PersonalInfo from "./PersonalInfo"
 
 export function UserTitleCard() {
   return (
-    <Card className="min-w-[350px] border-none px-0">
-      <CardHeader className='shadow-md'>
+    <Card className="min-w-[350px] border-0 px-0">
+      <CardHeader className='shadow-md border'>
     <div className='flex flex-col gap-2 '>
       <div className='rounded-md flex gap-x-20 items-center py-8'>
         <div className='flex items-center gap-4 border-none border-r-2'>
@@ -153,48 +153,10 @@ export function UserTitleCard() {
     </Tabs>
   </div>
 </CardContent>
-
-      {/* <CardFooter className="flex justify-between">
-        <Button variant="outline">Cancel</Button>
-        <Button>Deploy</Button>
-      </CardFooter> */}
-    </Card>
+</Card>
   )
 }
 
-{/* <Card className="w-[350px]">
-      <CardHeader>
-        <CardTitle>Create project</CardTitle>
-        <CardDescription>Deploy your new project in one-click.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form>
-          <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" placeholder="Name of your project" />
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="framework">Framework</Label>
-              <Select>
-                <SelectTrigger id="framework">
-                  <SelectValue placeholder="Select" />
-                </SelectTrigger>
-                <SelectContent position="popper">
-                  <SelectItem value="next">Next.js</SelectItem>
-                  <SelectItem value="sveltekit">SvelteKit</SelectItem>
-                  <SelectItem value="astro">Astro</SelectItem>
-                  <SelectItem value="nuxt">Nuxt.js</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-        </form>
-      </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="outline">Cancel</Button>
-        <Button>Deploy</Button>
-      </CardFooter>
-    </Card> */}
+
 
 

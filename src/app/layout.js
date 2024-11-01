@@ -2,7 +2,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./nexthauth/Providers";
-import { Poppins } from "next/font/google";
+import { Poppins, Work_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster"
 // import Sidenav from "./components/Sidenav";
@@ -14,6 +14,12 @@ const customPoppins = Poppins({
   subsets: ['latin'],
   weight: "400",
   variable: '--custom_poppins',
+});
+
+const workSans = Work_Sans({
+  subsets:['latin'],
+  weight: ["400", "600"],
+  variable: '--work_sans',
 });
 
 const geistSans = localFont({
@@ -39,6 +45,7 @@ export default function RootLayout({ children }) {
       
         // style={{color-scheme:"dark"}}
         className={cn(
+          workSans.variable,
           customPoppins.variable, // Corrected usage of cn
           geistSans.variable,
           geistMono.variable,

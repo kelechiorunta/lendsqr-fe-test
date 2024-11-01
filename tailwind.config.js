@@ -11,7 +11,7 @@ module.exports = {
   theme: {
   	extend: {
   		fontFamily: {
-  			sans: ["var(--custom_poppins)", ...fontFamily.sans]
+  			sans: ["var(--work_sans)", "var(--custom_poppins)", ...fontFamily.sans]
   		},
   		colors: {
   			background: 'hsl(var(--background))',
