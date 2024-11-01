@@ -1,11 +1,12 @@
+'use client'
 // components/ResetPassword.js
 import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter, useParams } from 'next/navigation';
 import axios from 'axios';
 
 export default function ResetPassword() {
   const router = useRouter();
-  const { token } = router.query; // Retrieve the token from the query parameters
+  const { token } = useParams(); // Retrieve the token from the query parameters
 
   const [newPassword, setNewPassword] = useState('');
   const [message, setMessage] = useState('');

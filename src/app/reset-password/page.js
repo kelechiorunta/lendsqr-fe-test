@@ -1,5 +1,6 @@
+'use client'
 // pages/reset-password.js
-import ResetPassword from "../components/RestPassword";
+import ResetPassword from "../components/ResetPassword";
 
 export default function ResetPasswordPage() {
   return (
