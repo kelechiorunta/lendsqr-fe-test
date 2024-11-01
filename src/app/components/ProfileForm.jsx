@@ -91,7 +91,7 @@ export default function ProfileForm() {
   const { isSubmitting, isValid } = form.formState
 
   return (
-    <div className='min-w-[300px] max-w-full border min-h-[70%] container flex justify-center items-center sm:justify-start sm:min-h-screen'>
+    <div className='min-w-[300px] max-w-full min-h-[70%] container flex justify-center items-center sm:justify-start sm:min-h-screen'>
     
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} 
