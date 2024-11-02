@@ -4,7 +4,9 @@ import { Home, UserCheck2, DollarSign, Wallet,
   Calendar, Users2, Users, House, Inbox, Search, 
   Settings, ChevronDown, UserCheck, UserX, GitMerge,
   Sliders, PiggyBank, FileText, Navigation, Hand,
-  Handshake
+  Handshake, Log,
+  LogOut,
+  MessageCircle
  } from "lucide-react"
 
  import Image from "next/image"
@@ -164,7 +166,22 @@ const businesses = [
       icon: Calendar,
       image: '/imgs/settings/audit_logs.png'
     },
+    {
+      title: "System Messages",
+      url: "#",
+      icon: MessageCircle,
+      image: '/imgs/settings/system_messages.png'
+    },
     ]
+
+    const logout = [
+      {
+        title: "Logout",
+        url: "#",
+        icon: LogOut,
+        image: '/imgs/logout.png'
+      },
+  ]
  
 import { useSidebar } from "@/components/ui/sidebar"
  
@@ -185,7 +202,7 @@ export function AppSidebar() {
   } = useSidebar();
 
   return (
-    <Sidebar  >
+    <Sidebar className='min-h-full' >
        
   <SidebarHeader>
     <SidebarMenu className='mt-14'>
@@ -325,6 +342,49 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
+      <SidebarContent className=''>
+        <SidebarGroup>
+          <SidebarGroupLabel>
+            <hr className='h-2 w-[80%] mx-auto'/>
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {logout.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <a onClick={signout} 
+                       href={item.url}>
+                      <Image 
+                        width={16}
+                        height={16}
+                        src={item.image} 
+                        alt={item.title}/>
+                      {/* <item.icon /> */}
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+
+            <SidebarMenu>
+             
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild>
+                <span>v1.2.0</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          
+            </SidebarMenu>
+
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+
+      
+
+      
 </Sidebar>
 
   )
