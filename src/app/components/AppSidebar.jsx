@@ -10,6 +10,7 @@ import { Home, UserCheck2, DollarSign, Wallet,
  } from "lucide-react"
 
  import Image from "next/image"
+ import { usePathname } from "next/navigation"
  
 import {
   Sidebar,
@@ -201,6 +202,8 @@ export function AppSidebar() {
     toggleSidebar,
   } = useSidebar();
 
+  const pathname = usePathname();
+
   return (
     <Sidebar className='min-h-full' >
        
@@ -249,8 +252,12 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {dashboard.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                <SidebarMenuItem
+                 className={`${pathname==item.url && 'border-l-4 text-black border-[#39cdcc] bg-[#f4fcfc] dark:hover:bg-[#f4fcfc] dark:hover:text-white'}`}
+                 key={item.title}>
+                  <SidebarMenuButton 
+                   className={`${pathname==item.url && 'dark:hover:bg-[#f4fcfc] dark:hover:text-black'}`}
+                   asChild>
                     <a href={item.url}>
                       <Image 
                         width={16}
@@ -274,8 +281,12 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {customers.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                <SidebarMenuItem
+                className={`${pathname==item.url && 'border-l-4 text-black border-[#39cdcc] bg-[#f4fcfc] dark:hover:bg-[#f4fcfc] dark:hover:text-white'}`} 
+                key={item.title}>
+                  <SidebarMenuButton 
+                  className={`${pathname==item.url && 'dark:hover:bg-[#f4fcfc] dark:hover:text-black'}`}
+                  asChild>
                     <a href={item.url}>
                       <Image 
                         width={16}
@@ -299,7 +310,9 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {businesses.map((item) => (
-                <SidebarMenuItem key={item.title}>
+                <SidebarMenuItem 
+                  className={`${pathname==item.url && 'border-l-4 text-black border-[#39cdcc] bg-[#f4fcfc]'}`}
+                  key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
                       <Image 
@@ -324,7 +337,9 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {settings.map((item) => (
-                <SidebarMenuItem key={item.title}>
+                <SidebarMenuItem 
+                  className={`${pathname==item.url && 'border-l-4 text-black border-[#39cdcc] bg-[#f4fcfc]'}`}
+                  key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
                       <Image 
@@ -351,7 +366,9 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {logout.map((item) => (
-                <SidebarMenuItem key={item.title}>
+                <SidebarMenuItem
+                  className={`${pathname==item.url && 'border-l-4 text-black border-[#39cdcc] bg-[#f4fcfc]'}`} 
+                  key={item.title}>
                   <SidebarMenuButton asChild>
                     <a onClick={signout} 
                        href={item.url}>

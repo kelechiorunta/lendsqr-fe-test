@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+LENDSQR Preliminary Task
 
-## Getting Started
+Firstly, I want to appreciate LENDSQR group for giving me as well as other great developers the opportunity to learn and grow in this preliminary task. Despite the challenges faced, I was finally able to complete the task to the best of my ability. Here is a summary of the process involved.
 
-First, run the development server:
+TOOLS USED - Next js framework, Tailwind css, Node, MongoDB.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+REASONS
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Next js
+For client-server ui flexibility and simplified routing with the App Router System.
+Easy integration with API routes for user login, reset password and authentication with custom (forgot and reset) API routes and NextAuth for catchAll (api/auth) routes.
+Easy integration with Next middleware for protected and non-protected routes.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Tailwind css
+For dynamic, conditional and flexible inline styling with ui components. For me, SCSS alone could not be effective due to the complex ui and imported libraries needed for the task.
+For easy integration and compatibility with most modern ui libraries built with React and Next js framework.
+To save time from creating excessive css modules due to the complexity of the general ui.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Node and MongoDB
+For persistent connection and storage to the MongoDB database
+For scaling purposes to a full-stack application.
 
-## Learn More
+FEW ADJUSTMENTS
+For the login page, I could not find and implement the Avenir Next font online so I worked generally with Work Sans which is the font used for the dashboard.
+I replaced the fixed authenticated user ‘Adedeji’ from the mockup with the actual logged in user’s email for authentication testing purposes with the session provider in Next js.
+I implemented a theme-switcher to toggle between light, system and dark modes for screen accessibility purposes.
+I made the sidebar of the dashboard page collapsible for responsive adaptation.
 
-To learn more about Next.js, take a look at the following resources:
+Deployed Link:
+https://orunta-kelechi-lendsqr-fe-test.vercel.app/
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Test Login Details
+Email: ariseTV@yahoo.com
+Password: riseand shine
