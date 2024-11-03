@@ -58,7 +58,7 @@ export const Payment = {
 
   export const Organization_popup = () => {
     return (
-      <Card className="w-max max-w-[350px] absolute top-10 right-100 z-50">
+      <Card className="w-max max-w-[350px] absolute top-10 right-100 z-10">
       <CardHeader>
         <CardTitle></CardTitle>
         <CardDescription></CardDescription>

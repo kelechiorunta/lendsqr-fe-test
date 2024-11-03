@@ -10,7 +10,7 @@ import { UserTitleCard } from '@/app/components/UserTitleCard'
 export default function page() {
    const router = useRouter();
   return (
-    <div className='py-16 px-8 container max-w-full'>
+    <div className='overflow-hidden py-16 px-0 container max-w-full md:px-4 lg:px-8'>
 
         <Button 
           onClick={()=>router.back()}
@@ -21,7 +21,7 @@ export default function page() {
 
         <div className='flex justify-between items-center mb-8'>
           <h1 className='text-1.5xl px-4 text-[rgba(33, 63, 125, 1)] font-medium'>Users Details</h1>
-          <div className='flex items-center gap-x-2'>
+          <div className='flex items-center gap-2 flex-wrap'>
             <Button className={cn(buttonVariants({ className:'text-[#eb5077] bg-transparent border-[#eb5077] border-2'}))}>
               BLACKLIST USER
             </Button>

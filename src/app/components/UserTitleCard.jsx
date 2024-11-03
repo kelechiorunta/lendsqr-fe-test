@@ -43,10 +43,10 @@ import PersonalInfo from "./PersonalInfo"
 
 export function UserTitleCard() {
   return (
-    <Card className="min-w-[350px] border-0 px-0">
+    <Card className="min-w-[300px] border-0 px-0 overflow-hidden">
       <CardHeader className='shadow-md border'>
     <div className='flex flex-col gap-2 '>
-      <div className='rounded-md flex gap-x-20 items-center py-8'>
+      <div className='rounded-md flex gap-x-20 gap-y-8 items-center py-8 flex-wrap sm:gap-y-4 md:gap-y-0'>
         <div className='flex items-center gap-4 border-none border-r-2'>
             <div className='w-[100px] h-[100px] border rounded-full'>
                 <Image 
@@ -94,7 +94,7 @@ export function UserTitleCard() {
       <CardContent className='-translate-y-10 max-w-full w-full px-0'>
   <div className="w-full max-w-full">
     <Tabs defaultValue="general" className="min-w-[400px] w-full max-w-full">
-      <TabsList className="flex text-[16px] space-x-4 px-4 bg-white w-full max-w-full items-center justify-between dark:bg-transparent">
+      <TabsList className="flex text-[16px] space-x-4 px-4 bg-white w-full max-w-full items-center overflow-hidden justify-start flex-wrap dark:bg-transparent md:justify-between">
         <TabsTrigger 
           value="general" 
           className="pb-2 px-4 border-b-2 rounded-none border-transparent data-[state=active]:border-[#7ddedd] data-[state=active]:text-[#7ddedd]"
