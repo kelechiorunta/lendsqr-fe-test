@@ -131,17 +131,19 @@ export const Payment = {
 export const columns = [
   {//ORGANIZATION HEADER
     accessorKey: "organization",
+    scope:'col',
+    label: 'Organisation',
     header: ({ column }) => {
       const user_Context = useContext(EmailContext);
       const { setTogglePopUp, togglePopup } = user_Context;
       // const [togglePopup, setTogglePopUp] = useState(false)
       return (
         <span
-          className='relative cursor-pointer flex w-full justify-start gap-x-4 items-center font-extrabold'
+          className='min-w-[100%] w-full relative cursor-pointer flex justify-between xl:justify-start gap-x-4 items-center font-extrabold'
           variant="ghost"
           onClick={() => setTogglePopUp(!togglePopup)}
         >
-          ORGANIZATION
+          <h1>ORGANIZATION</h1>
           <Wifi className=" h-4 w-4" />
           {/* <div className='z-50 absolute w-max'>{togglePopup && <Organization_popup/>}</div> */}
         </span>
@@ -153,7 +155,7 @@ export const columns = [
     header: ({ column }) => {
       return (
         <span
-          className='cursor-pointer flex w-full justify-start gap-x-4 items-center font-extrabold'
+          className='min-w-[100%] w-full relative cursor-pointer flex justify-between xl:justify-start gap-x-4 items-center font-extrabold'
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
@@ -168,7 +170,7 @@ export const columns = [
     header: ({ column }) => {
         return (
           <span
-            className='cursor-pointer flex w-full justify-start gap-x-4 items-center font-extrabold'
+            className='min-w-[100%] w-full relative cursor-pointer flex justify-between xl:justify-start gap-x-4 items-center font-extrabold'
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
@@ -183,7 +185,7 @@ export const columns = [
     header: ({ column }) => {
       return (
         <span
-          className='cursor-pointer flex w-full justify-start gap-x-4 items-center font-extrabold'
+          className='min-w-[100%] w-full relative cursor-pointer flex justify-between xl:justify-start gap-x-4 items-center font-extrabold'
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
@@ -198,7 +200,7 @@ export const columns = [
     header: ({ column }) => {
       return (
         <span
-          className='cursor-pointer flex w-full justify-start gap-x-4 items-center font-extrabold'
+          className='min-w-[100%] w-full relative cursor-pointer flex justify-between xl:justify-start gap-x-4 items-center font-extrabold'
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
@@ -213,7 +215,7 @@ export const columns = [
     header: ({ column }) => {
       return (
         <span
-          className='cursor-pointer flex w-full justify-start gap-x-4 items-center font-extrabold'
+          className='min-w-[100%] w-full relative cursor-pointer flex justify-between xl:justify-start gap-x-4 items-center font-extrabold'
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
@@ -232,7 +234,9 @@ export const columns = [
       const router = useRouter();
  
       return (
-        <DropdownMenu key={user}>
+        <DropdownMenu 
+        className='min-w-[100%] w-full relative cursor-pointer flex md:justify-between xl:justify-start gap-x-4 items-center font-extrabold'
+        key={user}>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0">
               <span className="sr-only">Open menu</span>

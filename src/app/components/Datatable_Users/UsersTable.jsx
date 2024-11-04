@@ -90,21 +90,27 @@ export function UsersTable({ columns, data, filterEmail }) {
 
   return (
     <div>
-      <div className="rounded-md border overflow-visible">
-        <Table className='overflow-visible'>
-          <TableHeader className='overflow-visible'>
+      <div className="rounded-md border w-full overflow-visible">
+        <Table
+          className='border-collapse text-ellipsis first-line:w-full '> 
+          <TableHeader
+          className="w-full text-center xl:table-header-group xl:w-max">
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow 
+              // className=" xl:table-header-group"
+              key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead 
-                      className='uppercase font-extrabold overflow-visible'
+                    <TableHead
+                      scope={header.scope} 
+                      className="flex flex-wrap border-collapse xl:table-cell px-2 py-[0.625em] text-center font-semibold uppercase tracking-wider " 
                       key={header.id}>
                       {header.isPlaceholder
                         ? null
                         : flexRender(
                             header.column.columnDef.header,
-                            header.getContext()
+                            header.getContext(),
+                            header.label
                           )}
                     </TableHead>
                   )
@@ -116,6 +122,7 @@ export function UsersTable({ columns, data, filterEmail }) {
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
+                  className=" block xl:table-row mb-[0.625em] xl:mb-0"
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                 >
@@ -123,9 +130,10 @@ export function UsersTable({ columns, data, filterEmail }) {
                     const cellValue = cell.getValue();
                     const isStatusColumn = cell.column.id === 'status';
                     return (
-                    <TableCell 
+                    <TableCell
+  
                     key={cell.id}
-                    className={isStatusColumn && `p-2 font-semibold text-left `}> 
+                    className={`${isStatusColumn && `p-2 font-semibold text-left `} text-ellipsis block xl:table-cell px-2 py-[0.625em] text-right xl:text-left border-b last:border-b-0 xl:border-0 before:content-[attr(data-label)] before:font-bold before:uppercase before:float-left before:xl:hidden`}> 
                       {isStatusColumn ? <Button className={isStatusColumn ? `max-w-[80px] h-[30px] py-2 px-8 font-semibold text-center ${getStatusStyle(cellValue)}` : ""}>
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}</Button> 
                         : flexRender(cell.column.columnDef.cell, cell.getContext())}

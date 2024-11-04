@@ -90,7 +90,7 @@ export default function UsersDataTable() {
   const data = getData();
 
   return (
-    <div className="relative container mx-auto py-10 overflow-visible">
+    <div className="relative container mx-auto py-10 max-w-full overflow-visible">
       <UsersTable columns={columns} data={data} filterEmail={filterEmail} 
       />
     <div className='absolute top-[50px] -left-10'>{togglePopup && <Organization_popup/>}</div>
