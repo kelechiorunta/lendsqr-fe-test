@@ -2,10 +2,19 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema({
-    name: { type: String, required: true, default: 'Anonymous User'  },
+    username: { type: String, required: true, default: 'Anonymous User'  },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     createdAt: { type: Date, default: Date.now },
+    otp: {
+        type: String,
+        default: 'otp'
+        // required: true,
+      },
+      expireAt: {
+        type: Date,
+        default: () => new Date(Date.now() + 300 * 1000), // Set to 5 minutes from now
+      },
     resetPasswordToken: { type: String },
     resetPasswordExpires: {type: Date },
 });

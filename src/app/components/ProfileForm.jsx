@@ -154,15 +154,18 @@ export default function ProfileForm() {
           )}
         />
 
-        <span className='text-[rgb(57,205,204)] block'>
+        <span className='text-[rgb(57,205,204)] flex justify-between items-center'>
         <Link href="/forgot-password">
           Forgot Password?
+        </Link>
+        <Link href="/signup">
+          Create New Account?
         </Link>
         </span>
         
         <Button
           disabled={!isValid || isSubmitting}
-          className="bg-[rgb(57,205,204)] w-full min-h-[48px] sm:min-w-[447px] md:max-w-[70%] lg:max-w-full "
+          className="bg-[rgb(57,205,204)] text-black font-bold w-full min-h-[48px] sm:min-w-[447px] md:max-w-[70%] lg:max-w-full dark:text-white "
           type="submit"
       >
           {isSubmitting ? "Logging in..." : "LOG IN"}
